@@ -1,7 +1,8 @@
+
 {
   "name": "ticketpro",
   "version": "1.0.0",
-  "description": "Professional Discord Ticket Management Bot by I_am_Naitik",
+  "description": "A professional Discord ticket management bot built with discord.js and SQLite.",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
