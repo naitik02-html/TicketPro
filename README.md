@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="banner.png" alt="TicketPro Banner" width="100%">
+</p>
+
 # 🎫 TicketPro
 
 ### A Modern Discord Ticket Management System
