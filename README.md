@@ -1,3 +1,4 @@
+
 <p align="center">
   <img src="banner.png" alt="TicketPro Banner" width="100%">
 </p>
@@ -6,7 +7,7 @@
 
 ### A Modern Discord Ticket Management System
 
-**TicketPro** is a Discord ticket management bot built with JavaScript and Discord.js. It provides an organized support workflow with ticket controls, SQLite database storage, and HTML transcript generation.
+**TicketPro** is a Discord ticket management bot built with JavaScript and Discord.js. It provides an organized support workflow with interactive ticket controls, SQLite database storage, and HTML transcript generation.
 
 <p align="center">
   <img src="https://img.shields.io/badge/Discord.js-v14-5865F2?style=for-the-badge&logo=discord&logoColor=white" />
@@ -21,13 +22,14 @@
 
 | Feature | Description |
 |:---|:---|
-| 🎫 Ticket Panel | Create an interactive ticket panel |
+| 🎫 Ticket Panel | Interactive ticket creation panel |
 | 👥 User Management | Add or remove users from tickets |
 | ✏️ Channel Management | Rename ticket channels |
-| 🗄️ Database | Store ticket data using SQLite |
+| 🗄️ Database | Persistent SQLite storage |
 | 📄 Transcripts | Generate HTML ticket transcripts |
-| 🛡️ Permissions | Manage access to ticket operations |
-| ⚡ Slash Commands | Interact through Discord slash commands |
+| 🛡️ Permissions | Staff-based ticket access and controls |
+| ⚡ Slash Commands | Easy Discord slash command interface |
+| 📌 Ticket Controls | Claim, unclaim, close, reopen and delete tickets |
 
 ---
 
@@ -35,8 +37,9 @@
 
 - **JavaScript** — Application logic
 - **Node.js** — Runtime environment
-- **Discord.js** — Discord API integration
+- **Discord.js v14** — Discord API integration
 - **SQLite** — Persistent data storage
+- **Better-SQLite3** — Database operations
 - **dotenv** — Environment configuration
 
 ---
@@ -47,8 +50,10 @@
 TicketPro/
 ├── .env.example
 ├── .gitignore
+├── LICENSE
 ├── README.md
 ├── add-user.js
+├── banner.png
 ├── config.js
 ├── db.js
 ├── deploy-commands.js
@@ -96,9 +101,9 @@ npm install
 
 **4. Configure environment variables**
 
-Create a `.env` file using `.env.example` as your template.
+Create a `.env` file in the project root using `.env.example` as your template.
 
-Add your Discord bot credentials and required channel, category, and role IDs.
+Add your Discord bot credentials and required server, category, role, and channel IDs.
 
 **5. Deploy slash commands**
 
@@ -118,7 +123,7 @@ npm start
 
 | Command | Description |
 |:---|:---|
-| `/ticket-panel` | Create a ticket panel |
+| `/ticket-panel` | Deploy the ticket panel |
 | `/add-user` | Add a user to a ticket |
 | `/remove-user` | Remove a user from a ticket |
 | `/rename` | Rename a ticket channel |
@@ -131,6 +136,7 @@ npm start
 - Keep your `.env` file private.
 - Never commit database files or private credentials.
 - Use `.env.example` as a configuration template.
+- Keep your bot permissions limited to what it needs.
 
 ---
 
@@ -144,8 +150,8 @@ npm start
 
 <p align="center">
   <strong>TicketPro</strong>
-  <br />
+  <br>
   Built to make Discord server support more organized.
-  <br /><br />
+  <br><br>
   <sub>Developed with JavaScript & Discord.js</sub>
 </p>
