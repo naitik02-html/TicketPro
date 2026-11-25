@@ -132,7 +132,7 @@ npm start
 
 ## 👨‍💻 Developer
 
-**Naitik Srivastava**
+**I_am_Naitik**
 
 [GitHub Profile](https://github.com/naitik02-html)
 
