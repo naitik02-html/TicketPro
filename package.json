@@ -1,0 +1,20 @@
+{
+  "name": "ticketpro",
+  "version": "1.0.0",
+  "description": "Professional Discord Ticket Management Bot by I_am_Naitik",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "deploy": "node deploy-commands.js"
+  },
+  "author": "I_am_Naitik",
+  "license": "MIT",
+  "dependencies": {
+    "better-sqlite3": "^11.5.0",
+    "discord.js": "^14.16.3",
+    "dotenv": "^16.4.5"
+  },
+  "engines": {
+    "node": ">=18.17.0"
+  }
+}

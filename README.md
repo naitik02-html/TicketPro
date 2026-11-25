@@ -1,152 +1,83 @@
-# 🎫 TicketPro
+# 🔮 TicketPro — Professional Discord Ticket Bot
+**Developed by I_am_Naitik**
 
-**A modern, reliable ticket management system for Discord communities.**
-
-Built with Discord.js v14, Node.js and SQLite.
-
-<p align="center">
-  <img src="https://img.shields.io/badge/Discord.js-v14-5865F2?style=flat-square&logo=discord&logoColor=white" />
-  <img src="https://img.shields.io/badge/Node.js-18.17%2B-339933?style=flat-square&logo=nodedotjs&logoColor=white" />
-  <img src="https://img.shields.io/badge/Database-SQLite-003B57?style=flat-square&logo=sqlite&logoColor=white" />
-  <img src="https://img.shields.io/badge/License-MIT-7C3AED?style=flat-square" />
-</p>
+TicketPro is a modular, restart-safe Discord support ticket management system built with **Node.js**, **discord.js v14**, and **SQLite**.
 
 ---
 
-## Overview
+## ✨ Features
+- **Black & Purple Branding**: Clean, modern Discord embeds and structured action buttons.
+- **5 Dedicated Ticket Categories**:
+  - 🎫 General Support
+  - 💳 Billing Support
+  - 🛡️ Player Reports
+  - 📋 Staff Applications
+  - ⚙️ Other Issues
+- **Duplicate Prevention**: Prevents users from spamming multiple open tickets simultaneously.
+- **Staff Claim System**: Staff members can claim and unclaim tickets to track ownership.
+- **Closing Reason Modal**: Prompts for a closing reason before locking the ticket.
+- **HTML Transcripts**: Automatically generates a styled dark-mode HTML transcript upon closing and uploads it to the staff log channel.
+- **Persistent SQLite Database**: Survives bot restarts without losing ticket ownership, claim status, or added members.
 
-TicketPro is a Discord support management bot designed to simplify ticket handling, improve staff coordination and provide a structured support experience.
+---
 
-With persistent storage, interactive controls and automated HTML transcripts, TicketPro provides the essential tools for managing community support efficiently.
+## 🛠️ Discord Developer Portal Setup (Intents & Permissions)
+1. Go to the [Discord Developer Portal](https://discord.com/developers/applications) and create a **New Application** named `TicketPro`.
+2. Navigate to the **Bot** tab:
+   - Click **Reset Token** and copy your token (never share it publicly).
+   - Under **Privileged Gateway Intents**, enable:
+     - ✅ **Server Members Intent**
+     - ✅ **Message Content Intent** (Required for HTML transcript generation)
+3. Navigate to **OAuth2 → URL Generator**:
+   - **Scopes**: Check `bot` and `applications.commands`.
+   - **Bot Permissions**: Check:
+     - `Manage Channels`
+     - `Manage Roles`
+     - `Send Messages`
+     - `Embed Links`
+     - `Attach Files`
+     - `Read Message History`
+     - `Manage Messages`
+4. Copy the generated URL and invite TicketPro to your Discord server.
 
-## Features
+---
 
-| Feature | Description |
-| :--- | :--- |
-| Ticket Categories | Five dedicated support categories |
-| Interactive Panels | Button-based ticket creation |
-| Staff Claim System | Claim and unclaim support tickets |
-| User Management | Add or remove members from tickets |
-| Closing Modal | Collect closing reasons |
-| HTML Transcripts | Generate and upload ticket transcripts |
-| Persistent Storage | SQLite-backed ticket data |
-| Duplicate Prevention | Prevent multiple open tickets per user |
+## 🚀 Installation & Running Locally
+1. **Install Node.js**: Ensure Node.js `v18.17.0` or higher is installed.
+2. **Install Dependencies**:
+   ```bash
+   npm install
+   ```
+3. **Configure Environment Variables**:
+   - Rename `.env.example` to `.env`.
+   - Enable **Developer Mode** in Discord (`User Settings → Advanced → Developer Mode`) to copy IDs.
+   - Fill in `BOT_TOKEN`, `CLIENT_ID`, `GUILD_ID`, `TICKET_CATEGORY_ID`, `SUPPORT_ROLE_ID`, and `LOG_CHANNEL_ID`.
+4. **Deploy Slash Commands**:
+   ```bash
+   npm run deploy
+   ```
+5. **Start the Bot**:
+   ```bash
+   npm start
+   ```
 
-## Ticket Categories
+---
 
-- General Support
-- Billing Support
-- Player Reports
-- Staff Applications
-- Other Issues
+## 🌐 24/7 Hosting Guide (VPS / PM2)
+To keep TicketPro running 24/7 on a Linux VPS (Ubuntu/Debian):
+```bash
+npm install -g pm2
+pm2 start index.js --name "TicketPro"
+pm2 save
+pm2 startup
+```
 
-## Commands
+---
 
-| Command | Access | Description |
+## 📋 Commands Overview
+| Command | Permission | Description |
 | :--- | :--- | :--- |
-| `/ticket-panel` | Administrator | Create a ticket panel |
-| `/add-user` | Support Staff | Add a member to a ticket |
-| `/remove-user` | Support Staff | Remove a member from a ticket |
-| `/rename` | Support Staff | Rename a ticket channel |
-
-## Technology Stack
-
-- **Runtime:** Node.js
-- **Framework:** Discord.js v14
-- **Language:** JavaScript
-- **Database:** SQLite (better-sqlite3)
-- **Configuration:** dotenv
-- **Transcripts:** HTML
-
-## Installation
-
-**Requirements**
-- Node.js 18.17.0 or newer
-- A Discord Application
-- A Discord Server
-
-**1. Clone the repository**
-
-```bash
-git clone https://github.com/naitik02-html/TicketPro.git
-cd TicketPro
-```
-
-**2. Install dependencies**
-
-```bash
-npm install
-```
-
-**3. Configure environment variables**
-
-Create a `.env` file using `.env.example`.
-
-Configure the following variables:
-
-```env
-BOT_TOKEN=
-CLIENT_ID=
-GUILD_ID=
-TICKET_CATEGORY_ID=
-SUPPORT_ROLE_ID=
-LOG_CHANNEL_ID=
-```
-
-**4. Deploy slash commands**
-
-```bash
-npm run deploy
-```
-
-**5. Start TicketPro**
-
-```bash
-npm start
-```
-
-## Project Structure
-
-```text
-TicketPro/
-├── commands/
-│   ├── add-user.js
-│   ├── remove-user.js
-│   ├── rename.js
-│   └── ticket-panel.js
-├── database/
-│   └── db.js
-├── events/
-│   ├── interactionCreate.js
-│   └── ready.js
-├── utils/
-│   ├── config.js
-│   ├── embeds.js
-│   ├── logger.js
-│   └── transcript.js
-├── .env.example
-├── .gitignore
-├── deploy-commands.js
-├── index.js
-└── package.json
-```
-
-## Security
-
-- Never expose your Discord bot token.
-- Keep your `.env` file private.
-- Never commit credentials or private configuration.
-- Use `.env.example` as the public configuration template.
-
-## Developer
-
-**Naitik Srivastava**
-
-GitHub: [@naitik02-html](https://github.com/naitik02-html)
-
----
-
-<p align="center">
-  <b>TicketPro</b><br/>
-  <sub>Structured support. Better communities.</sub>
-</p>
+| `/ticket-panel` | Administrator | Sends the interactive ticket creation panel. |
+| `/add-user <user>` | Support Staff | Grants a user access to the current ticket. |
+| `/remove-user <user>` | Support Staff | Revokes a user's access from the current ticket. |
+| `/rename <name>` | Support Staff | Renames the current ticket channel. |
